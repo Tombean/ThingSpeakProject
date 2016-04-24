@@ -1,0 +1,7 @@
+ThingSpeak : 
+User ID  :	ProjetJavaIG2016
+Password :	Polytech
+Email	 :	tom.somerville-roberts@etu.umontpellier.fr
+Time Zone:	Paris
+API Key	 : 	R9FHAXDFNZWZKXY9
+Channel ID:	111035
