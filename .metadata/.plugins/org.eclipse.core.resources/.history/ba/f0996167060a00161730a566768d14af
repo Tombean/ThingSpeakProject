@@ -1,0 +1,15 @@
+import java.util.Scanner;
+import java.io.File;
+
+public class TestHighScore1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Entrez votre nom s'il vous plait : ");
+		String playerName = sc.nextLine();
+		File f = new File("../ressources/scoreFile.csv");
+		
+		
+	}
+
+}
