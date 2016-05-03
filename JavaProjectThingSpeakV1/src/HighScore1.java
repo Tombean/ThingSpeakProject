@@ -11,12 +11,22 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class handles highscores in our game
+ * @author erick.taru, tom.sommerville-roberts
+ *
+ */
 public class HighScore1 {
 	
 URLConnection connection;
 //String fileContent;
 ArrayList<String> list;
 
+/**
+ * Retrieves names and scores from the server
+ * @param s server
+ * @return joueur / score
+ */
 public String[][] getScores(int s){
 		String server = Integer.toString(s);
 		String adresse = "https://api.thingspeak.com/channels/"+server+"/feeds.csv";
@@ -48,11 +58,15 @@ public String[][] getScores(int s){
 		 return tokens;
 	}
 	
+	/**
+	 * gets the content of the file
+	 * @throws IOException error possible during communication with the server
+	 */
 	public void getFileContent(  ) throws IOException
 	 {
 	   try{ 
 			   BufferedReader br = new BufferedReader( new InputStreamReader(this.connection.getInputStream() ));
-			   System.out.println("Pret à lire le buffer : " +br.ready());
+			   System.out.println("Pret ï¿½ lire le buffer : " +br.ready());
 			   // lit la 1ere ligne pour enlever les headers
 			   br.readLine();
 			   String ligne = "";
@@ -66,6 +80,11 @@ public String[][] getScores(int s){
 		 e.printStackTrace();
 	 }
 	 }
+	
+	/**
+	 * Opens the connection to ThingSpeak
+	 * @param url URL to connect to
+	 */
 	public void ouvrir(String url){
 		try {
 			this.connection = new URL(url).openConnection();

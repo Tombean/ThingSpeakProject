@@ -9,7 +9,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Main class for running the app
+ * @author erick.taru, tom.spmmerville-roberts
+ *
+ */
+
 public class TestHighScore1 {
+	
+	/**
+	 * Main of the application
+	 * @param args various arguments
+	 */
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -26,6 +37,10 @@ public class TestHighScore1 {
 			        server = 0;
 			    }	
 		
+			/**
+			 * the following is to get a random score
+			 */
+			
 		HighScore1 h = new HighScore1();
 		String[][] tokens = h.getScores(server);         
 	         Random rand =  new Random();
