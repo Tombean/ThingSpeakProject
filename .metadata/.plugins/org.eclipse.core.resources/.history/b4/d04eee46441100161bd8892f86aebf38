@@ -36,7 +36,8 @@ public class TestHighScore1 {
 				e.printStackTrace();
 				randScore = 1;
 			}
-	         System.out.println(playerName + " has reached the score : " + tokens[1][randScore]);
+	         for(int i = 0; i < tokens.length; i++){ System.out.println(tokens[0][i]); }
+	         System.out.println(playerName + " has reached the score : " + tokens[0][randScore]);
 
 	      
 		
