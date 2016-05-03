@@ -17,8 +17,7 @@ URLConnection connection;
 //String fileContent;
 ArrayList<String> list;
 
-public String[][] getScores(int s){
-		String server = Integer.toString(s);
+public String[][] getScores(int server){
 		String adresse = "https://api.thingspeak.com/channels/"+server+"/feeds.csv";
 		System.out.println("url : " + adresse);
 		ouvrir(adresse);
@@ -32,6 +31,7 @@ public String[][] getScores(int s){
 			e.printStackTrace();
 		}
 	         int taille =  this.list.size();
+	         System.out.println(taille);
 	         // tokens contient joueur / score 
 	         tokens = new String[2][taille];
 	         String delims = ",";
@@ -50,22 +50,22 @@ public String[][] getScores(int s){
 	
 	public void getFileContent(  ) throws IOException
 	 {
-	   try{ 
-			   BufferedReader br = new BufferedReader( new InputStreamReader(this.connection.getInputStream() ));
-			   System.out.println("Pret à lire le buffer : " +br.ready());
-			   // lit la 1ere ligne pour enlever les headers
-			   br.readLine();
-			   String ligne = "";
-			   while( ( ligne  = br.readLine() ) != null ){
-			       if( !ligne.equals("")){
-			    	   System.out.println("ligne : " + ligne);
-			    	   this.list.add(ligne);
-			       }
+	   try( 
+			   BufferedReader br = new BufferedReader( new InputStreamReader(this.connection.getInputStream() )))
+	   {
+		   // lit la 1ere ligne pour enlever les headers
+		   br.readLine();
+		   String ligne = "";
+		   while( ( ligne  = br.readLine() ) != null ){
+		       if( ligne == ""){
+		    	   System.out.println("ligne : " + ligne);
+		    	   this.list.add(ligne);
+		       }
 		   }
-	 } catch(IOException e){
-		 e.printStackTrace();
+	      }
+	      
 	 }
-	 }
+	
 	public void ouvrir(String url){
 		try {
 			this.connection = new URL(url).openConnection();

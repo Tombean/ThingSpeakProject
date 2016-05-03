@@ -32,6 +32,7 @@ public String[][] getScores(int s){
 			e.printStackTrace();
 		}
 	         int taille =  this.list.size();
+	         System.out.println(taille);
 	         // tokens contient joueur / score 
 	         tokens = new String[2][taille];
 	         String delims = ",";
@@ -57,7 +58,7 @@ public String[][] getScores(int s){
 			   br.readLine();
 			   String ligne = "";
 			   while( ( ligne  = br.readLine() ) != null ){
-			       if( !ligne.equals("")){
+			       if( ligne != ""){
 			    	   System.out.println("ligne : " + ligne);
 			    	   this.list.add(ligne);
 			       }
