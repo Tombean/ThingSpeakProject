@@ -92,6 +92,7 @@ public String[][] getScores(int s){
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+			
 		}
 	}
 	
