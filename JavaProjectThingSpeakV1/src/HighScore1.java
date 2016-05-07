@@ -31,7 +31,7 @@ public String[][] getScores(int s){
 		String server = Integer.toString(s);
 		String adresse = "https://api.thingspeak.com/channels/"+server+"/feeds.csv";
 		System.out.println("url : " + adresse);
-		ouvrir(adresse);
+		open(adresse);
 		this.list = new ArrayList<String>();
 		//this.fileContent = "";
 		String[][] tokens;     
@@ -85,7 +85,7 @@ public String[][] getScores(int s){
 	 * Opens the connection to ThingSpeak
 	 * @param url URL to connect to
 	 */
-	public void ouvrir(String url){
+	public void open(String url){
 		try {
 			this.connection = new URL(url).openConnection();
 		} catch (MalformedURLException e) {
