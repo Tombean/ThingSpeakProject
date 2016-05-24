@@ -11,11 +11,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
  * This class handles highscores in our game
- * @author erick.taru, tom.sommerville-roberts
+ * @author erick.taru, tom.sommerville roberts
  *
  */
 public class HighScore3 {
@@ -105,9 +106,7 @@ public class HighScore3 {
 
 		for(int i=0;i<readScores.length;i++){
 			String[] parts = ((String)readScores[i]).split(",");
-			allBest[i]= new BestPlayer2();
-			allBest[i].setName(parts[3]);
-			allBest[i].setScore(Integer.parseInt(parts[2]));
+			allBest[i]= new BestPlayer2(parts[3], Integer.parseInt(parts[2]) );
 		}
 
 		int i=0;
