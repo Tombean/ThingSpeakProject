@@ -12,6 +12,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
+/**
+ * This class handles highscores in our game
+ * @author erick.taru, tom.sommerville roberts
+ *
+ */
+
+
 public class HighScore4 {
 	URLConnection connection;
 	//String fileContent;
@@ -62,7 +70,7 @@ public class HighScore4 {
 	 {
 	   try{ 
 			   BufferedReader br = new BufferedReader( new InputStreamReader(this.connection.getInputStream() ));
-			   System.out.println("Pret à lire le buffer : " +br.ready());
+			   System.out.println("Pret ï¿½ lire le buffer : " +br.ready());
 			   // lit la 1ere ligne pour enlever les headers
 			   br.readLine();
 			   String ligne = "";
@@ -91,10 +99,15 @@ public class HighScore4 {
 		}
 	}
 	
+
+	/**
+	 * function to retrieve the ten best scores
+	 *
+	 */
 	public BestPlayer2[] tenBestScores(String [][] readScores, int s){
 
 		BestPlayer2[] allBest= new BestPlayer2[readScores[0].length];
-		System.out.println("Il y a deja "+readScores[0].length+" joueurs ayant mis leur résultat en ligne ! ");
+		System.out.println("Il y a deja "+readScores[0].length+" joueurs ayant mis leur rï¿½sultat en ligne ! ");
 
 		for(int i=0;i<readScores[0].length;i++){
 			allBest[i]= new BestPlayer2(readScores[0][i], Integer.parseInt(readScores[1][i]) );
@@ -104,6 +117,7 @@ public class HighScore4 {
 		BestPlayer2 mem;
 		mem= allBest[0];
 		
+		//sorting algorithm for scores
 		for(int i = 0; i<(allBest.length - 1); i++ ){
 			int pos = i;
 			for (int j = (1+i) ;  j< allBest.length; j++){
@@ -117,6 +131,7 @@ public class HighScore4 {
 			}
 			
 		BestPlayer2 top[];
+
 		if (allBest.length <10){
 			top = new BestPlayer2[allBest.length];
 			for (int i = 0; i < allBest.length; i++){
@@ -129,13 +144,19 @@ public class HighScore4 {
 				top[i] = allBest[i];
 			}
 		}
-		
+
+		//condition to place the new best scorein the list of ten best scores		
 		for (int a = 0; a< top.length; a++){
 			System.out.println((a+1) + " - "+ top[a].getName() + " has reached the score : "+ top[a].getScore());
 		}
 		return top ;
 	}
 
+
+	/**
+	 * function to send to score of the player to ThingSpeak
+	 * 
+	 */
 	public void sendScore(BestPlayer2 p, int s){
         	try {
         
@@ -153,3 +174,4 @@ public class HighScore4 {
 	
 
 }
+
