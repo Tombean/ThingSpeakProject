@@ -59,7 +59,8 @@ public class TestHighScore4 {
 			{
 				System.out.println("What's your name ? ");
 				playerName = sc.nextLine();
-				         
+				    
+				// Will pick a random score in the scores already existing     
 				Random rand =  new Random();
 				int randScore = 0;
 				try
@@ -78,16 +79,20 @@ public class TestHighScore4 {
 				
 				int inTopTen = 0;
 				int i  = 0;
+				// will check if player is in top ten
 				while (inTopTen != 1 && i < 10) {
+					// if there isn't 10 persons in top 10, you are in top 10
 					if ( top.length < 10){
 						inTopTen = 1;
 						System.out.println("Welcome in top 10, but you know, they weren't even 10 players anyway :(");
 					}
+					// checks if the player has at least a score better than a player in top 10
 					else{
 						inTopTen = bestPlayer.compareTo(top[i]);
 						i++;
 					}
 				}
+				// send player's name and score to server
 				if (inTopTen == 1){
 					h.sendScore(bestPlayer, server);
 					System.out.println(playerName + ", welcome in top 10");
