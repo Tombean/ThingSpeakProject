@@ -27,8 +27,8 @@ public class HighScore4 {
 
 	/**
 	 * Retrieves names and scores from the server
-	 * @param s server
-	 * @return joueur / score
+	 * @param s : (int) ThingSpeak server's ID
+	 * @return player / score
 	 */
 	
 	public String[][] getScores(int s){
@@ -102,7 +102,9 @@ public class HighScore4 {
 
 	/**
 	 * function to retrieve the ten best scores
-	 *
+	 * @param String [][] readScores :  result from the parser after it has received the csv file from ThingSpeak
+	 * @param s : (int) ThingSpeak server's ID
+	 * @return Array of BestPlayer2
 	 */
 	public BestPlayer2[] tenBestScores(String [][] readScores, int s){
 
@@ -155,6 +157,8 @@ public class HighScore4 {
 
 	/**
 	 * function to send to score of the player to ThingSpeak
+	 * @param Bestplayer2 p
+	 * @param s : (int) ThingSpeak server's ID
 	 * 
 	 */
 	public void sendScore(BestPlayer2 p, int s){
